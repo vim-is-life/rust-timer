@@ -27,14 +27,20 @@ fn countdown(end_time: u64) {
     loop {
         let current_time = start_time.elapsed().as_secs();
 
-        if current_time == end_time {
-            println!("done!");
-            break;
-        } else if current_time != last_time {
-            println!("{}", end_time - current_time);
+        // case where we just started
+        if current_time == last_time {
+            print!("{end_time}");
+            last_time += 1;
+        // case where we're going through and we're not just starting but we're
+        // also not done.
+        } else if current_time != last_time && current_time != end_time {
             print!("\r{}", end_time - current_time);
             last_time += 1;
             std::io::stdout().flush().unwrap();
+        // case where we've finished
+        } else {
+            println!("\ndone!");
+            break;
         }
     }
 }
