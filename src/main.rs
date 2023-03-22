@@ -8,7 +8,16 @@
  * - TODO add functionality to be a stopwatch as well
  */
 
+use clap::Parser;
 use std::time::Instant;
+
+// Define the cli args
+#[derive(Parser, Debug)]
+#[command(author = "vim-is-life", about = "A CLI timer program.")]
+struct Args {
+    /// The time, currently in seconds, to count down from.
+    time: u64,
+}
 
 // We make the parameter a u64 because the current time will come as a u64.
 fn countdown(end_time: u64) {
