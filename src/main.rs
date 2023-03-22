@@ -9,6 +9,7 @@
  */
 
 use clap::Parser;
+use std::io::Write;
 use std::time::Instant;
 
 // Define the cli args
@@ -31,7 +32,9 @@ fn countdown(end_time: u64) {
             break;
         } else if current_time != last_time {
             println!("{}", end_time - current_time);
+            print!("\r{}", end_time - current_time);
             last_time += 1;
+            std::io::stdout().flush().unwrap();
         }
     }
 }
