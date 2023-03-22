@@ -27,15 +27,17 @@ fn countdown(end_time: u64) {
         let current_time = start_time.elapsed().as_secs();
 
         if current_time == end_time {
-            println!("done! {} seconds have passed", current_time);
+            println!("done!");
             break;
         } else if current_time != last_time {
-            println!("{} seconds have passed", current_time);
+            println!("{}", end_time - current_time);
             last_time += 1;
         }
     }
 }
 
 fn main() {
-    countdown(5);
+    let args = Args::parse();
+
+    countdown(args.time);
 }
