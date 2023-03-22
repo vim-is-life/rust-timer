@@ -34,7 +34,7 @@ fn countdown(end_time: u64) {
         // case where we're going through and we're not just starting but we're
         // also not done.
         } else if current_time != last_time && current_time != end_time {
-            print!("\r{}", end_time - current_time);
+            print!("\r{:>5}", end_time - current_time);
             last_time += 1;
             std::io::stdout().flush().unwrap();
         // case where we've finished
