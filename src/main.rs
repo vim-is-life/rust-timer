@@ -29,6 +29,14 @@ struct CountdownTime {
     complete_secs: u64,
 }
 
+impl CountdownTime {
+    /// Method to update `mins_and_secs` field of the struct. Intended to be
+    /// called after doing an operation with the complete_secs field
+    fn update(&self) {
+        todo!()
+    }
+}
+
 /// Function to parse a time given as a string into a CountdownTime instance.
 fn parse_time(given_time: &str) -> Result<CountdownTime, ParseIntError> {
     let test = (
