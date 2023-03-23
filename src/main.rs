@@ -100,7 +100,9 @@ fn countdown(end_time: u64) {
         } else if current_time != last_time && current_time != end_time {
             print!("\r{:>5}", end_time - current_time);
             last_time += 1;
-            std::io::stdout().flush().unwrap();
+            std::io::stdout()
+                .flush()
+                .expect("Unable to flush STDOUT for some reason");
         // case where we've finished
         } else {
             println!("\ndone!");
